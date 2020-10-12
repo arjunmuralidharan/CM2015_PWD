@@ -7,6 +7,11 @@
 \input{../../../Templates/cover}
 
 \section{Setting up your programming environment}
+\subsection{Jupyter Setup} % (fold)
+\label{ssub:jupyter_setup}
+
+% subsubsection jupyter_setup (end)
+
 Install Jupyter Lab using the following command.
 
 \begin{minted}{shell}
@@ -20,6 +25,132 @@ Run Jupyter Lab using the following command.
 \end{minted}
 
 The interface allows you to create individual \texttt{.py} files, or entire \emph{notebooks} that contain \emph{cells}. Each cell is a small set of commands to execute and view the output of inline. A cell can contain code or markdown.
+
+\subsection{Python Basics} % (fold)
+\label{ssub:python_basics}
+
+ Python relies on whitespace indentation, and comments are given using the \texttt{\#} sign. Code blocks are initiated with a colon, after which the contents of the block are indented one level.
+
+ \begin{minted}{python}
+ 	# This is a simple Python script
+ 	for x in array:
+ 		if x < pivot:
+ 			less.append(x)
+		else:
+			greater.append(x)
+ \end{minted}
+
+ Everything in Python is an \emph{object}, making methods available on e.g.\ variables, strings, data structured, modules or even functions. In a notebook, pressing ``Tab'' will expose the available methods.
+
+ Python assigns variable by reference, i.e.\ it uses binding. This means that when a variable \( a \) is assigned to another variable \( b \), changes to \( a \) will also reflect in \( b \).
+
+ Python is \emph{strongly typed} but will make implicit type conversions when obvious. To find the type of a variable, use the following function.
+
+ \begin{minted}{python}
+ 	isinstance(a, int)
+ 	isinstance(a, (int, float))
+
+ 	# To check the type in general
+ 	type(a)
+ \end{minted}
+This returns \texttt{true} if the provided variable is of the given type. In the second example, a tuple is used, where the function checks if the variable is of any type provided in the tuple.
+
+Check if an object is iterable:
+ \begin{minted}{python}
+ 	# Returns true if the argument is iterable
+ 	isiterable(a)
+
+ 	# Example: Convert an iterable structure to a list
+ 	if not isinstance(x, list) and isiterable(x):
+ 		x = list(x)
+ \end{minted}
+
+
+Python can import other Python files as modules, and even use variables from those files with new names.
+ \begin{minted}{python}
+	import some_module as sm
+	from sm import PI as pi, g as gf
+
+	r1 = sm.f(pi)
+	r2 = gf(6, pi)
+ \end{minted}
+
+Python supports all the standard arithemtic and logical operators. One operator worth highlighting is the \emph{is} operator.
+
+ \begin{minted}{python}
+ 	# Returns true if both variables are referencing the same object
+ 	a is b
+ 	a is not b
+
+ 	# NOTE: These are not the same as
+ 	a == b
+ 	a != b
+ \end{minted}
+
+The standard scalar types are \texttt{int}, \texttt{float}, \texttt{str}, \texttt{bytes}, \texttt{bool}, and \texttt{None}. These can also be used as functions to cast a variable to the specific type, if implicit conversion is possible.
+
+While strings can be written with single or double quotes, in Python we can use triple quotes for strings spanning multiple lines.
+
+ \begin{minted}{python}
+	c = '''
+	This is a multi-line
+	string that has a lot
+	of text in it
+	'''
+ \end{minted}
+
+ Python string literals are immutable, you cannot modify a string directly using assignment to an index of the string. They do however behave like lists and can be iterated on.
+
+ Strings also support a Python feature called templating, where templates are inserted into a string and then filled using the \texttt{format} method.
+
+  \begin{minted}{python}
+  # .2f represents a 2-decimal float, s is a string and d is an integer
+  template = "{0:.2f} {1:s} are worth US${2:d}"
+  template.format(4.5560, 'Argentine Pesos', 1)
+ \end{minted}
+
+ More details on templating are available in the Python documentation.
+
+ \subsection{Control Flow}
+
+ Conditional statements in Python.
+
+  \begin{minted}{python}
+if x < 0:
+	print("Smaller")
+elif x > 0
+	print("Larger")
+else
+	pass
+ \end{minted}
+
+The \texttt{pass} statement moves forward in the code without executing anything, similar to a \texttt{continue} statement in other languages.
+
+For loops always use a range or an iterator. While loops take a conditional.
+
+ \begin{minted}{python}
+ 	for x in some_list:
+ 		# do smart stuff
+
+ 	while x < 0:
+ 		# do other smart stuff
+ 	 \end{minted}
+
+ The \texttt{range} function returns an evenly spaced iterator of integers.
+
+ \begin{minted}{python}
+	list(range(6))
+	# Returns a list [0, 1, 2, 3, 4, 5]
+ \end{minted}
+
+Ternary operators allow for more concise conditional statements.
+ \begin{minted}{python}
+ value = true_expr if condition else false_expr
+ \end{minted}
+
+
+
+% subsubsection python_basics (end)
 
 \section{Variables, control flowand functions}
 \section{Data structures}
